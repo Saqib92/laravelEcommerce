@@ -24,12 +24,15 @@
           
             <div class="navbar-collapse collapse" id="navb" style="">
               <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                  <a class="nav-link" href="javascript:void(0)">Login</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="javascript:void(0)">SignUp</a>
-                </li>
+                @if (Auth::guest())
+                    <li class="nav-item">
+                      <a class="nav-link" href="{{route('login')}}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="javascript:void(0)">SignUp</a>
+                    </li>
+                @else
+                @endif               
               </ul>
             </div>
         </nav>

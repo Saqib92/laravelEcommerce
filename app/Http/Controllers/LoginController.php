@@ -15,7 +15,7 @@ class LoginController extends Controller
         //dd($request->all());
 
         $this->validate($request,[
-            'email'=> 'required',
+            'email'=> 'required|email:rfc,dns',
             'password'=> 'required'
         ]);
         return redirect(route('home'));

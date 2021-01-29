@@ -23,11 +23,12 @@ use App\Http\Controllers\HomeController;
 // })->name('login');
 
 
-//Login Controller
-Route::get('/', [LoginController::class, 'main']);
-Route::post('login', [LoginController::class, 'login_post'])->name('postLogin');
-
-
-
 //Home Controller
-Route::get('home', [HomeController::class, 'main'])->name('home');
+Route::get('/', [HomeController::class, 'main'])->name('home');
+
+
+
+
+//Login Controller
+Route::get('login', [LoginController::class, 'main'])->name('login');
+Route::post('login', [LoginController::class, 'login_post'])->name('postLogin');
