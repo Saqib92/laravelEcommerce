@@ -15,8 +15,8 @@
 
     <body>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="javascript:void(0)">
-                <img src="{{ asset('images/logo.jpg') }}" class="logo-main"/>
+            <a class="navbar-brand" href="{{route('home')}}" >
+                <img src="{{ asset('images/logo.jpg') }}" class="logo-main" />
             </a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navb" aria-expanded="true">
               <span class="navbar-toggler-icon"></span>
@@ -29,16 +29,33 @@
                       <a class="nav-link" href="{{route('login')}}">Login</a>
                     </li>
                     <li class="nav-item">
-                      <a class="nav-link" href="javascript:void(0)">SignUp</a>
+                      <a class="nav-link" href="{{route('signup')}}">SignUp</a>
                     </li>
                 @else
                 @endif               
               </ul>
             </div>
         </nav>
-        
-       @yield('body')
-
+        @if(Session::has('success'))
+            <div class="alert alert-warning alert-dismissible fade show" role="alert">
+              <strong>{{Session::get('success')}}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div> 
+          @endif
+    
+          @if(Session::has('error'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+              <strong>{{Session::get('error')}}</strong>
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+          </div> 
+          @endif
+       
+          @yield('body')
+      
 
        <div class="container-fluid bg-dark">
         <footer class="pt-4 my-md-5 pt-md-5 border-top">

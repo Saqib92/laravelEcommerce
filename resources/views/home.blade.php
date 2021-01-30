@@ -1,6 +1,6 @@
 @extends('index')
 @section('body')
-
+{{-- @dump(Auth::user()) --}}
     <div class="">
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -75,7 +75,7 @@
               <div class="product-name">Product Name</div>
               <div class="product-des">Product Details Here</div>
               <div class="product-price">$ 1000</div>
-              <button class="btn btn-dark">Add to Cart</button>
+              <button class="btn btn-dark" onclick="addToCart()">Add to Cart</button>
             </div>
           </div>
         </div>
@@ -177,5 +177,5 @@
 
     </div>
 
-
+  <script src="{{asset('js/index.js')}}"></script>
 @endsection

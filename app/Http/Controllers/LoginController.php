@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Auth;
 
 class LoginController extends Controller
 {
@@ -16,8 +17,25 @@ class LoginController extends Controller
 
         $this->validate($request,[
             'email'=> 'required|email:rfc,dns',
-            'password'=> 'required'
+            'password'=> 'required' 
         ]);
-        return redirect(route('home'));
+
+        $credentials = [
+            'email' => $request['email'],
+            'password' => $request['password'],
+        ];
+    
+       
+        //dd($credentials);
+    
+        if (Auth::attempt($credentials)) {
+            return redirect()->route('home');
+        }
+
+        session()->flash('error', 'Email pasword wrong');
+
+        return redirect()->back();
+        
+        //return redirect(route('home'));
     }
 }
